@@ -11,18 +11,18 @@ export default function Admin({ setPosts }) {
         form.append('title', title);
         form.append('article', article);
         form.append('image', img);
-        console.log(form);
-        console.log(img);
+        // console.log(form);
+        // console.log(img);
         // Diese Funktion wird verwendet, um Daten an den Server zu senden.
         // Sie erstellt ein neues FormData-Objekt, fügt die Werte von "title", "article" und "img" hinzu
         // und sendet das FormData-Objekt an den Server mithilfe einer HTTP-POST-Anfrage.
         // Die Antwort wird in JSON umgewandelt und an "setPosts" übergeben, um den Zustand der Komponente zu aktualisieren.
-        fetch('http://localhost:9898', {
+        fetch('http://localhost:9898/', {
             method: 'POST',
             body: form
         })
             .then(response => response.json())
-            .then(data => setPosts(data));
+            .then(data => { setPosts(data); });
     };
 
     // Die Komponente gibt ein JSX-Element zurück, das eine Sektion mit dem Klassennamen "admin" enthält.

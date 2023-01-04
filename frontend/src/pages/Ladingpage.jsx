@@ -8,7 +8,7 @@ export default function Ladingpage({ posts, setPosts }) {
     // wenn die Komponente zum ersten Mal gerendert wird. Die Antwort wird dann in JSON umgewandelt
     // und an "setPosts" übergeben, um den Zustand der Komponente zu aktualisieren.
     useEffect(() => {
-        fetch('http://localhost:9898/')
+        fetch('http://localhost:9898/api/posts')
             .then(response => response.json())
             .then(data => setPosts(data));
     }, []);
@@ -22,7 +22,8 @@ export default function Ladingpage({ posts, setPosts }) {
                 <h1>👾 Blog</h1>
             </header>
             <main className="articleGrid">
-                {posts.map((post, key) => {
+                {posts?.map((post, key) => {
+                    console.log(post);
                     return <BlogPost
                         key={key}
                         img={post.img}
